@@ -1,0 +1,8 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.MuiInput-input {
+  font-size: 60px !important;
+}
