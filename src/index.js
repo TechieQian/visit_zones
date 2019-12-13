@@ -153,7 +153,7 @@ function App() {
           History
         </Button>
       </section>
-      <Modal open={open} onClose={handleClose}>
+      <Modal style={{ overflow: "scroll" }} open={open} onClose={handleClose}>
         <History history={history} deleteAmount={removeAmount} />
       </Modal>
     </div>
