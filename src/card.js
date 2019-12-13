@@ -7,7 +7,7 @@ import RadioGroup from "@material-ui/core/RadioGroup";
 export default function AnswerCard(props) {
   const { zone, iv, rev, onRadioChange, radioValue } = props;
   return (
-    <Card>
+    <Card style={{ margin: "15px 0" }}>
       <div style={{ fontSize: "40px" }}>{zone || "Not Found"}</div>
       <RadioGroup
         aria-label="position"

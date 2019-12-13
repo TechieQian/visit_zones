@@ -4,7 +4,7 @@ import CloseIcon from "@material-ui/icons/Close";
 
 export default function History(props) {
   return (
-    <div>
+    <div className="history">
       {props.history.map((item, idx) => {
         const { val, radioVal, inputVal, answer } = item;
         return (

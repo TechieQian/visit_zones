@@ -111,7 +111,7 @@ function App() {
     <div
       className="App"
       style={{
-        marginTop: "40vh"
+        marginTop: "10vh"
       }}
     >
       <div className="input">
@@ -134,6 +134,7 @@ function App() {
         radioValue={radioVal}
         onRadioChange={onRadioChange}
       />
+
       <Button
         style={{ marginRight: "5px" }}
         disabled={answer === ""}
@@ -141,16 +142,22 @@ function App() {
         variant="contained"
         color="primary"
       >
-        Ok
+        输入
       </Button>
       <Button onClick={onClear} variant="contained" color="secondary">
-        Clear
+        清除
       </Button>
 
-      <section style={{ marginTop: "15px", fontSize: "40px" }}>
-        ${totalAmount}
-        <Button color="primary" onClick={handleOpen}>
-          History
+      <section style={{ margin: "15px 0", fontSize: "40px" }}>
+        <span>${totalAmount}</span>
+        <Button
+          style={{ marginLeft: "15px" }}
+          variant="outlined"
+          color="primary"
+          onClick={handleOpen}
+          disabled={history.length < 1}
+        >
+          历史 ({history.length})
         </Button>
       </section>
       <Modal style={{ overflow: "scroll" }} open={open} onClose={handleClose}>

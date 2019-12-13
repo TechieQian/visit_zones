@@ -5,8 +5,12 @@
 
 .MuiInput-input {
   font-size: 60px !important;
+  text-align: center;
 }
 
 .MuiFormGroup-root {
   justify-content: center;
+}
+.history {
+  background-color: white;
 }
