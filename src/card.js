@@ -4,27 +4,26 @@ import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 
 export default function AnswerCard(props) {
-  const { zone, iv, rev, onRadioChange, radioValue } = props;
+  const { zone, ab, ac, onRadioChange, radioValue } = props;
   return (
     <div style={{ margin: "15px 0" }}>
       <div style={{ fontSize: "40px" }}>{zone || "Not Found"}</div>
       <RadioGroup
-        aria-label="position"
         name="position"
         value={radioValue}
         onChange={onRadioChange}
         row
       >
         <FormControlLabel
-          value={"rev"}
+          value={"ac"}
           control={<Radio color="primary" />}
-          label={`Rev $${rev || 0}`}
+          label={`AC $${ac || 0}`}
           labelPlacement="start"
         />
         <FormControlLabel
-          value={"iv"}
+          value={"ab"}
           control={<Radio color="primary" />}
-          label={`I.V $${iv || 0}`}
+          label={`AB $${ab || 0}`}
           labelPlacement="start"
         />
       </RadioGroup>

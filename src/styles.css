@@ -14,3 +14,7 @@
 .history {
   background-color: white;
 }
+
+.MuiTypography-body1 {
+  font-size: 1.2rem;
+}

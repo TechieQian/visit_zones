@@ -14,7 +14,7 @@ import "./styles.css";
 
 function App() {
   const [answer, setAnswer] = useState("");
-  const [radioVal, setRadio] = useState("iv");
+  const [radioVal, setRadio] = useState("ac");
   const [ivVal, setIv] = useState();
   const [revVal, setRev] = useState();
   const [totalAmount, setTotal] = useState(0);
@@ -32,7 +32,7 @@ function App() {
       setVal("");
       return;
     }
-    if (!reg.test(val)) return;
+    if (!reg.test(val) || val.length > 5) return;
     setVal(val);
     calcAnswer(val);
   };
@@ -111,7 +111,7 @@ function App() {
     <div
       className="App"
       style={{
-        marginTop: "10vh"
+        marginTop: "15vh"
       }}
     >
       <div className="input">
@@ -123,13 +123,13 @@ function App() {
           <IconButton onClick={() => setCount(count - 1)}>
             <Remove />
           </IconButton>
-          <span>x{count}</span>
+          <span style={{ marginLeft: "15px" }}>x{count}</span>
         </div>
       </div>
 
       <AnswerCard
-        rev={revVal}
-        iv={ivVal}
+        ac={revVal}
+        ab={ivVal}
         zone={answer}
         radioValue={radioVal}
         onRadioChange={onRadioChange}
@@ -161,11 +161,13 @@ function App() {
         </Button>
       </section>
       <Modal style={{ overflow: "scroll" }} open={open} onClose={handleClose}>
-        <History
-          history={history}
-          deleteAmount={removeAmount}
-          onClose={handleClose}
-        />
+        <div>
+          <History
+            history={history}
+            deleteAmount={removeAmount}
+            onClose={handleClose}
+          />
+        </div>
       </Modal>
     </div>
   );
