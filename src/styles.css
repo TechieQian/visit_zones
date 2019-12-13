@@ -6,3 +6,7 @@
 .MuiInput-input {
   font-size: 60px !important;
 }
+
+.MuiFormGroup-root {
+  justify-content: center;
+}

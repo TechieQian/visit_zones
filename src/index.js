@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import Input from "@material-ui/core/Input";
-import Radio from "@material-ui/core/Radio";
 import Button from "@material-ui/core/Button";
-
 import zones from "./zones";
+import AnswerCard from "./card";
+import IconButton from "@material-ui/core/IconButton";
+import Add from "@material-ui/icons/Add";
+import Remove from "@material-ui/icons/Remove";
+import Modal from "@material-ui/core/Modal";
+import History from "./history";
 
 import "./styles.css";
 
@@ -16,6 +20,10 @@ function App() {
   const [totalAmount, setTotal] = useState(0);
   const [inputVal, setVal] = useState("");
   const [amountCount, setAmountCount] = useState(0);
+  const [count, setCount] = useState(1);
+  const [history, setHistory] = useState([]);
+  const [open, setOpen] = useState(false);
+
   const reg = /^\d+$/;
 
   const onInputChange = function(event) {
@@ -59,18 +67,45 @@ function App() {
     setIv();
     setRev();
     setAnswer("");
+    setCount(1);
   };
 
   const buttonClick = function() {
     const val = radioVal === "iv" ? ivVal : revVal;
-    setTotal(totalAmount + val);
+    let _hist = history;
+    setTotal(totalAmount + count * val);
     setAmountCount(amountCount + 1);
+    for (let i = 0; i < count; i++) {
+      let historyItem = {
+        answer,
+        radioVal,
+        val,
+        inputVal
+      };
+      _hist.push(historyItem);
+    }
+    setHistory(_hist);
     reset();
+  };
+
+  const removeAmount = (val, idx) => {
+    setTotal(totalAmount - val);
+    setHistory(history.slice(0, idx).concat(history.slice(idx + 1)));
+    setOpen(false);
+  };
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
   };
 
   const onClear = function() {
     setTotal(0);
     setAmountCount(0);
+    setHistory([]);
   };
   return (
     <div
@@ -79,18 +114,26 @@ function App() {
         marginTop: "40vh"
       }}
     >
-      <Input onChange={onInputChange} value={inputVal} />
-      <label>I.V ${ivVal} </label>
-      <Radio onChange={onRadioChange} value="iv" checked={radioVal === "iv"} />
-      <label>Rev. ${revVal} </label>
-      <Radio
-        onChange={onRadioChange}
-        value="rev"
-        checked={radioVal === "rev"}
+      <div className="input">
+        <Input onChange={onInputChange} value={inputVal} />
+        <div className="iconbar">
+          <IconButton onClick={() => setCount(count + 1)}>
+            <Add />
+          </IconButton>
+          <IconButton onClick={() => setCount(count - 1)}>
+            <Remove />
+          </IconButton>
+          <span>x{count}</span>
+        </div>
+      </div>
+
+      <AnswerCard
+        rev={revVal}
+        iv={ivVal}
+        zone={answer}
+        radioValue={radioVal}
+        onRadioChange={onRadioChange}
       />
-      <section style={{ fontSize: "50px" }} id="answer">
-        {answer}
-      </section>
       <Button
         style={{ marginRight: "5px" }}
         disabled={answer === ""}
@@ -103,9 +146,16 @@ function App() {
       <Button onClick={onClear} variant="contained" color="secondary">
         Clear
       </Button>
+
       <section style={{ marginTop: "15px", fontSize: "40px" }}>
-        ${totalAmount} ({amountCount})
+        ${totalAmount}
+        <Button color="primary" onClick={handleOpen}>
+          History
+        </Button>
       </section>
+      <Modal open={open} onClose={handleClose}>
+        <History history={history} deleteAmount={removeAmount} />
+      </Modal>
     </div>
   );
 }
