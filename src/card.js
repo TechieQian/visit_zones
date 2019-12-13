@@ -15,13 +15,13 @@ export default function AnswerCard(props) {
         row
       >
         <FormControlLabel
-          value={"ac"}
+          value={"AC"}
           control={<Radio color="primary" />}
           label={`AC $${ac || 0}`}
           labelPlacement="start"
         />
         <FormControlLabel
-          value={"ab"}
+          value={"AB"}
           control={<Radio color="primary" />}
           label={`AB $${ab || 0}`}
           labelPlacement="start"

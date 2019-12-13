@@ -14,9 +14,9 @@ import "./styles.css";
 
 function App() {
   const [answer, setAnswer] = useState("");
-  const [radioVal, setRadio] = useState("ac");
-  const [ivVal, setIv] = useState();
-  const [revVal, setRev] = useState();
+  const [radioVal, setRadio] = useState("AC");
+  const [abVal, setAB] = useState();
+  const [acVal, setAC] = useState();
   const [totalAmount, setTotal] = useState(0);
   const [inputVal, setVal] = useState("");
   const [amountCount, setAmountCount] = useState(0);
@@ -47,31 +47,31 @@ function App() {
     }
     if (zones.get(1).has(+val)) {
       setAnswer("Zone 1");
-      setRev(65);
-      setIv(85);
+      setAC(65);
+      setAB(85);
     }
     if (zones.get(2).has(+val)) {
       setAnswer("Zone 2");
-      setRev(75);
-      setIv(95);
+      setAC(75);
+      setAB(95);
     }
     if (zones.get(3).has(+val)) {
       setAnswer("Zone 3");
-      setRev(85);
-      setIv(105);
+      setAC(85);
+      setAB(105);
     }
   };
 
   const reset = function() {
     setVal("");
-    setIv();
-    setRev();
+    setAB();
+    setAC();
     setAnswer("");
     setCount(1);
   };
 
   const buttonClick = function() {
-    const val = radioVal === "iv" ? ivVal : revVal;
+    const val = radioVal === "AB" ? abVal : acVal;
     let _hist = history;
     setTotal(totalAmount + count * val);
     setAmountCount(amountCount + 1);
@@ -128,8 +128,8 @@ function App() {
       </div>
 
       <AnswerCard
-        ac={revVal}
-        ab={ivVal}
+        ac={acVal}
+        ab={abVal}
         zone={answer}
         radioValue={radioVal}
         onRadioChange={onRadioChange}
