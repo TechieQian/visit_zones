@@ -4,10 +4,14 @@ import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 
 export default function AnswerCard(props) {
-  const { zone, ab, ac, onRadioChange, radioValue } = props;
+  const { zone, ac, ab, onRadioChange, radioValue } = props;
+  console.log(props);
+
   return (
     <div style={{ margin: "15px 0" }}>
-      <div style={{ fontSize: "40px" }}>{zone || "Not Found"}</div>
+      <div style={{ fontSize: "40px" }}>
+        {zone ? `Zone ${zone}` : "Not Found"}
+      </div>
       <RadioGroup
         name="position"
         value={radioValue}
