@@ -5,7 +5,6 @@ import RadioGroup from "@material-ui/core/RadioGroup";
 
 export default function AnswerCard(props) {
   const { zone, ac, ab, onRadioChange, radioValue } = props;
-  console.log(props);
 
   return (
     <div style={{ margin: "15px 0" }}>

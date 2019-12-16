@@ -27,16 +27,16 @@ export default function History(props) {
       {acs.map((ac, i) => {
         if (!ac) return;
         return (
-          <div>
-            Zone {i + 1} AC x{ac} = {ac * (65 + i * 10)}
+          <div style={{ fontSize: "18px" }}>
+            &emsp;Zone {i + 1} AC x{ac} = ${ac * (65 + i * 10)}
           </div>
         );
       })}
       {abs.map((ab, i) => {
         if (!ab) return;
         return (
-          <div>
-            Zone {i + 1} AB x{ab} = {ab * (85 + i * 10)}
+          <div style={{ fontSize: "18px" }}>
+            &emsp;Zone {i + 1} AB x{ab} = ${ab * (85 + i * 10)}
           </div>
         );
       })}
