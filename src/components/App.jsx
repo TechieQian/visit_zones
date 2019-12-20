@@ -21,6 +21,7 @@ function App(props) {
   const [count, setCount] = useState(1);
   const [history, setHistory] = useState([]);
   const [open, setOpen] = useState(false);
+  const [sumOpen, setSumOpen] = useState(false);
 
   const reg = /^\d+$/;
 
