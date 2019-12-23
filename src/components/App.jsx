@@ -90,6 +90,9 @@ function App(props) {
     setOpen(false);
   };
 
+  const handleOpenSum = () => setSumOpen(true);
+  const handleCloseSum = () => setSumOpen(false);
+
   const onClear = function() {
     setTotal(0);
     setAmountCount(0);
