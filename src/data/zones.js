@@ -63,7 +63,9 @@ const zone1 = new Set([
 
   11358,
   11360,
-  11370
+  11370,
+  11369,
+  11429
 ]);
 
 const zone2 = new Set([
