@@ -237,7 +237,8 @@ const zone3 = new Set([
   10308,
   10467,
   10453,
-  11462
+  11462,
+  10470
 ]);
 
 export default new Map([[1, zone1], [2, zone2], [3, zone3]]);
