@@ -21,11 +21,10 @@ function App(props) {
   const [count, setCount] = useState(1);
   const [history, setHistory] = useState([]);
   const [open, setOpen] = useState(false);
-  const [sumOpen, setSumOpen] = useState(false);
 
   const reg = /^\d+$/;
 
-  const onInputChange = function(event) {
+  const onInputChange = function (event) {
     const val = event.target.value;
     if (!val) {
       setVal("");
@@ -36,11 +35,11 @@ function App(props) {
     calczone(val);
   };
 
-  const onRadioChange = function(event) {
+  const onRadioChange = function (event) {
     setRadio(event.target.value);
   };
 
-  const calczone = function(val) {
+  const calczone = function (val) {
     let zoneInfo;
     if ((zoneInfo = calculateZone(val) || val.length !== 5)) {
       let { zone, ab, ac } = zoneInfo;
@@ -51,13 +50,13 @@ function App(props) {
     }
   };
 
-  const reset = function() {
+  const reset = function () {
     props.dispatchZone({ zone: "", ab: 0, ac: 0 });
     setVal("");
     setCount(1);
   };
 
-  const buttonClick = function() {
+  const buttonClick = function () {
     const { ab, ac } = props.zoneState;
     const val = radioVal === "AB" ? ab : ac;
     let _hist = history;
@@ -90,10 +89,7 @@ function App(props) {
     setOpen(false);
   };
 
-  const handleOpenSum = () => setSumOpen(true);
-  const handleCloseSum = () => setSumOpen(false);
-
-  const onClear = function() {
+  const onClear = function () {
     setTotal(0);
     setAmountCount(0);
     setHistory([]);

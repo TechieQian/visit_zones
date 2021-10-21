@@ -25,7 +25,7 @@ export default function History(props) {
       })}
       <p />
       {acs.map((ac, i) => {
-        if (!ac) return;
+        if (!ac) return null;
         return (
           <div style={{ fontSize: "18px" }}>
             &emsp;Zone {i + 1} AC x{ac} = ${ac * (65 + i * 10)}
@@ -33,7 +33,7 @@ export default function History(props) {
         );
       })}
       {abs.map((ab, i) => {
-        if (!ab) return;
+        if (!ab) return null;
         return (
           <div style={{ fontSize: "18px" }}>
             &emsp;Zone {i + 1} AB x{ab} = ${ab * (85 + i * 10)}
